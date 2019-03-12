@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Postavite pitanje</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2><h:outputLink  style="color: dimgray;" value="index.xhtml"> Vrati se na pocetnu stranu</h:outputLink></h2>
+        </h:form>   
+         <div class="sat">
+            <p:clock   pattern="HH:mm:ss dd.MM.yyyy"   />
+       </div>
+        
+        <center>
+            <p:graphicImage name="mobileMarket.jpg" library="images" height="150" width="150"/>
+        </center>
+        
+        
+        <p:separator/>
+        <center>
+            <h3 style="color: dimgray; font-size: 25px;">POSTAVITE PITANJE ADMINISTRATORU<br/>POKUSACEMO DA VAM ODGOVORIMO NA VAS EMAIL,U NAJKRACEM MOGUCEM ROKU<br/>POZDRAV!!</h3>
+        
+         <h:form>
+        <p:panelGrid columns="2">        
+                <f:facet name="header"> Postavite pitanje</f:facet>
+              
+                <p:outputLabel  value="Ime:" />
+                <p:inputText  value="#{porukeMb.userName}" >
+                </p:inputText>
+                
+
+                <p:outputLabel value="Email" />
+                <p:inputText value="#{porukeMb.email}"  >
+                     
+                </p:inputText>
+                
+                
+               
+               <p:outputLabel value="Pitanje:" />
+               <p:inputTextarea value="#{porukeMb.question}">
+                   
+               </p:inputTextarea>
+                  
+               
+                
+               <f:facet name="footer">
+                   <div align="center">
+                       <p:commandButton value="Posalji" action="#{porukeMb.userSendMessage()}"/>
+                    </div>
+               </f:facet>
+        </p:panelGrid>
+             </h:form>
+        </center>
+    </h:body>
+</html>
+

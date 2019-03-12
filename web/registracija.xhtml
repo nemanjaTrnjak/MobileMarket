@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registracija</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        
+         <h:form>
+            
+            <h2><h:outputLink  style="color: dimgray;" value="index.xhtml"> Vrati se na pocetnu stranu</h:outputLink></h2>
+        </h:form>   
+        
+         <div class="sat">
+            <p:clock   pattern="HH:mm:ss dd.MM.yyyy"   />
+       </div>
+        
+        <center>
+            
+             <p:graphicImage name="mobileMarket.jpg" library="images" height="250" width="350" />
+             <p:separator/>
+             
+             
+              <h:form>
+                  <p:panelGrid columns="2">
+                      
+                <f:facet name="header">Registracija Korisnika </f:facet>
+               <p:outputLabel  value="Korisnicko ime:" />
+               <p:inputText id="korImeId" value="#{registerMb.userName}" required="true"  validatorMessage="Min 5,Max 15" requiredMessage="Obavezno polje korisnicko ime">
+                 <f:validateLength for="korImeId" minimum = "4" maximum = "20" />
+                     <p:message for="korImeId" />
+               </p:inputText>
+                
+
+                <p:outputLabel value="Lozinka:" />
+                <p:inputText  id="lozinkaId" value="#{registerMb.password}" required="true"  validatorMessage="Min 5,Max 15" requiredMessage="Obavezno polje lozinka" >
+                     <f:validateLength for = "lozinkaId" minimum = "4" maximum = "20"  />
+                   <p:message for="lozinkaId"/>
+                </p:inputText>
+                
+                
+               
+               <p:outputLabel value="Email:" />
+               <p:inputText id="emailId" value="#{registerMb.email}" required="true"  validatorMessage="Greska,Min 5,Max 15" requiredMessage="Obavezno polje email" >
+                   <f:validateRegex for="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+                   <f:validateLength for="emailId" minimum="8" maximum="25"/>
+               </p:inputText>
+                
+                
+                <p:outputLabel value="Ime:" />
+                <p:inputText id="imeId" value="#{registerMb.name}" validatorMessage="Min 3,Max 15" required="true" requiredMessage="Obavezno polje ime" >
+                   <f:validateLength for = "imeId" minimum = "3" maximum = "15"  />
+                   <p:message for="imeId"/>
+                </p:inputText>
+               
+                
+               <p:outputLabel value="Prezime:" />
+               <p:inputText id="prezimeId" value="#{registerMb.surName}"  required="true" requiredMessage="Obavezno polje prezime">
+               <f:validateLength for = "prezimeId" minimum = "4" maximum = "20"  />
+                   <p:message for="prezimeId"/>
+               </p:inputText>
+              
+                
+            
+               <p:outputLabel value="Mobilni telefon:" />
+               <p:inputText id="mobilniId" value="#{registerMb.mobile}"  validatorMessage="Min 9,Max 10,samo brojevi" required="true" requiredMessage="Obavezno polje mobilni">
+                   <f:validateRegex pattern="[0-9]*" for="mobilniId"/>
+                   <f:validateLength for = "mobilniId" minimum = "9" maximum = "10"  />
+               </p:inputText>
+           
+                 <f:facet name="footer">
+                     <div align="center">
+                         <p:commandButton value="Registruj se"  action="#{registerMb.register()}"/>
+                     </div>
+                 </f:facet>
+               
+               
+            </p:panelGrid>
+            
+       </h:form>
+            
+             <p:messages  autoUpdate="true" closable="true"  style="width: 400px;"/>
+        </center>
+        
+    </h:body>
+</html>
+

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    
+    /*
+    *
+    * ------------- NE RADI  ----------------
+    */
+    
+     <h:head>
+        <title>Odgovor </title>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2><h:outputLink  style="color: dimgray;" value="admin.xhtml"> Vrati se na admin stranu</h:outputLink></h2>
+        </h:form>   
+         <div class="sat">
+            <p:clock   pattern="HH:mm:ss dd.MM.yyyy"   />
+       </div>
+        
+        <center>
+            <p:graphicImage name="mobileMarket.jpg" library="images" height="150" width="150"/>
+        </center>
+        
+        
+        <p:separator/>
+        
+        <center>
+          <h:form>
+              
+              
+        <p:panelGrid columns="2">        
+                <f:facet name="header"> Odgovor na pitanje</f:facet>
+              
+                <p:outputLabel  value="Ime:" />
+                <p:outputLabel  value="#{adminMb.odabranaPoruka.ime}" />
+                
+                
+
+                <p:outputLabel value="Email" />
+                <p:outputLabel value="#{adminMb.odabranaPoruka.email}" />
+                
+                
+               
+               <p:outputLabel value="Pitanje:" />
+               <p:outputLabel value="#{adminMb.odabranaPoruka.pitanje}"/>
+                   
+             
+               <p:outputLabel value="Odgovor:" />
+               <p:inputTextarea value="#{adminMb.odabranaPoruka.odgovor}"/>
+               
+                
+               <f:facet name="footer">
+                   <div align="center">
+                       <p:commandButton value="Posalji" action="#{adminMb.adminResponseMessage(odabranaPoruka.odgovor)}"/>
+                    </div>
+               </f:facet>
+        </p:panelGrid>
+              
+              
+             </h:form>
+        </center>
+    </h:body>
+</html>
+

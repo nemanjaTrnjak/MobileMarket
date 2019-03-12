@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Punjaci za mobilni</title>
+             <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            
+            
+    <p:layoutUnit position="north" size="200" >
+      
+        <div class="sat">
+            <p:clock   pattern="HH:mm:ss dd.MM.yyyy"   />
+        </div>
+        
+        <div class="slika">
+            <p:graphicImage name="mobileMarket.jpg" library="images" height="150" width="150"/>
+        </div>
+       
+            
+                
+           
+                  
+           
+        <h:form>
+           
+        <h:panelGrid rendered="#{loginMb.loggedInUser eq null}">
+            <h:outputLink value="login.xhtml"  >Prijavi se</h:outputLink>
+               
+                
+ 
+         
+               Ako ste novi korisnik? Registrujte se
+               <h:outputLink value="registracija.xhtml" >ovde</h:outputLink>
+           </h:panelGrid>
+        </h:form>
+        <h:panelGrid rendered="#{loginMb.loggedInUser ne null}" >
+            <div class="pulsate">
+                <h3>Prijavljeni korisnik , <br/> #{loginMb.loggedInUser.ime} #{loginMb.loggedInUser.prezime} </h3>
+          
+              <h:form>
+                  <h:commandLink value="Odjava" action="#{loginMb.logout()}" /> 
+            </h:form>
+                </div>
+        </h:panelGrid> 
+        
+        
+        <center>
+            <h1>Dobro dosli na sajt Mobilne opreme i servis</h1>
+        </center>
+       
+    </p:layoutUnit>
+
+            
+            
+              <!--Predstavlja korisnicku korpu  koja se renderuje kad se ubacuju proizvodi--> 
+     <p:layoutUnit position="east" size="400" header="Vasa Korpa" resizable="true" collapsible="true" >
+         <h:form id="formKorpa">
+         <p:dataTable id="korpaId" emptyMessage="Vasa korpa je prazna"   value="#{shopCartMb.cartItems}" var="item"  >
+           <p:column>
+               <f:facet name="header">Naziv</f:facet>
+               #{item.product.naziv}
+           </p:column>
+           <p:column>
+               <f:facet name="header">Kolicina</f:facet>
+               #{item.productNum}
+           </p:column>
+          
+           <p:column>
+               <f:facet name="header">Ukupna cena</f:facet>
+               #{item.totalPrice}
+           </p:column>
+           <p:column>
+               
+               <p:commandButton update="korpaId"  value="Izbaci" title="Izbaci iz korpe"  actionListener="#{shopCartMb.removeCartItems(item.product)}" >
+               </p:commandButton>
+               
+           </p:column>
+                  
+         
+               <f:facet name="footer">
+                 
+                       <h:outputLink value="secured/kupovina.xhtml">Nastavi</h:outputLink>
+                   
+               </f:facet>
+        
+              
+           
+           
+        
+       </p:dataTable>
+             
+              </h:form>
+           
+    </p:layoutUnit>
+            
+            
+              
+           <!--Predstavlja meni sa leve strane sa opcijama koje korisnik moze da izabere -->      
+    <p:layoutUnit position="west" size="200" header="Meni" resizable="true"  collapsible="true" >
+        <h:form id="Meni1">
+            <p:menu >                                                                       
+                <p:menuitem  value="Pocetna Stranica" outcome="index.xhtml" />
+                <p:separator />
+                <p:separator />
+                <p:separator />
+                <p:submenu  label= "Mobilni Telefoni"  >
+                   
+                    
+                    <p:menuitem   value="Nokia" outcome="allNokia.xhtml"/>
+                
+                
+                    <p:menuitem  value="Samsung"  outcome="allSamsung.xhtml" />
+                
+               
+                    <p:menuitem  value="iPhone" outcome="alliPhone.xhtml"/>
+                
+              
+                    <p:menuitem update="" value="Huawei" outcome="allHuawei.xhtml" />
+                
+            </p:submenu>
+           
+            <p:submenu label="Dodatna Oprema"  >
+                <p:menuitem  value="Maske" outcome="allMaske.xhtml" />
+                <p:menuitem value="Baterije" outcome="allBaterije.xhtml" />
+                <p:menuitem value="Punjaci"  outcome="allPunjaci.xhtml" />
+             </p:submenu>
+            <p:submenu label="Pomoc"  />
+                <p:menuitem value="Kontakt" url="kontakt.xhtml" />
+                <p:menuitem value="Lokacija" url ="lokacija.xhtml" />
+         </p:menu>
+        </h:form>
+    </p:layoutUnit>
+     
+              
+           
+           
+             <!--Prikazuje sve proizvode za kupovinu,i generise prikaz u zavisnosti koju opciju korisnik izabere-->
+    <p:layoutUnit position="center">
+      
+        
+        <h:form id="formProizvodi">
+       
+            <p:dataGrid   columns="3"  id="proizvodiId" var="proizvodi" value="#{productsMb.allPunjaci}" rows="9" paginator="true" emptyMessage="Trenutno nemamo proizvode" >
+       
+        <f:facet name="header">
+            Proizvodi
+        </f:facet>
+        
+        
+                <p:panel  header="#{proizvodi.naziv}" style="text-align: center">
+            <h:panelGrid columns="1" style="width:100%">
+                
+                <h:outputText value="#{proizvodi.cena} .din" /> 
+            
+           <h:commandButton  value="Dodaj u korpu" actionListener="#{shopCartMb.addCartItem(proizvodi)}">
+                    <f:ajax execute="@form" render=":formKorpa:korpaId"/>
+           </h:commandButton>
+                
+            </h:panelGrid>
+            </p:panel>
+        
+        </p:dataGrid>
+        </h:form>
+    </p:layoutUnit>
+     
+     
+     
+     
+     <p:layoutUnit position="south"  size="80"    collapsible="true" >
+         
+         <h:form>
+         <center>  <h2>U svakom trenutku mozete postaviti pitanje administratoru , klikom  <p:commandLink   >ovde</p:commandLink></h2>
+         </center>
+         </h:form>
+    </p:layoutUnit>
+
+            
+        </p:layout>
+
+
+    </h:body>
+</html>
+

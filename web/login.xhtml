@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login strana</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>  <h:outputLink  style="color: dimgray;" value="index.xhtml"> Vrati se na pocetnu stranu</h:outputLink></h2>
+        </h:form>   
+        
+         <div class="sat">
+            <p:clock   pattern="HH:mm:ss dd.MM.yyyy"   />
+       </div>
+        
+        <center>
+            
+           <p:graphicImage name="mobileMarket.jpg" library="images" height="250" width="350" />
+           <p:separator/>
+           <h:form>
+
+           <p:panelGrid columns="2"  >
+               <f:facet name="header">Prijava korisnika</f:facet>
+              
+               <p:outputLabel value="Korisnicko ime:" />
+               <p:inputText id="korImeId"  required="true" validatorMessage="Min 5,Max 25" requiredMessage="Obavezno polje korisnicko ime" value="#{loginMb.userName}">
+                   <f:validateLength for="korImeId" minimum = "5" maximum = "25" />
+                     <p:message for="korImeId" />
+               </p:inputText>
+              
+ 
+               <p:outputLabel value="Lozinka:" />
+               <p:password validatorMessage="Min 5,Max 25"  id="lozinkaId"  redisplay="true" required="true" requiredMessage="Obavezno polje lozinka" value="#{loginMb.password}">
+                   <f:validateLength for = "lozinkaId" minimum = "5" maximum = "25"  />
+                   <p:message for="lozinkaId" />
+               </p:password>
+               
+            <f:facet name="footer" >
+                <div align="center">
+                <p:commandButton   value="Prijavi se" action="#{loginMb.login()}"/> 
+                
+                </div>
+            </f:facet>
+            </p:panelGrid>
+               
+             
+               
+            </h:form>
+          
+           <p:messages  autoUpdate="true" closable="true"  style="width: 400px;"/>
+          
+                     
+        </center>
+        
+        
+       
+    </h:body>
+</html>
+

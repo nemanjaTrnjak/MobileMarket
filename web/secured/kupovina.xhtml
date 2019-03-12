@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Kupovina</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <h:form>
+        <h2><h:outputLink  style="color: dimgray;" value="../index.xhtml"> Vrati se na pocetnu stranu</h:outputLink></h2>
+        </h:form>   
+        
+         <div class="sat">
+            <p:clock   pattern="HH:mm:ss dd.MM.yyyy"   />
+       </div>
+        
+        <center>
+            
+           <p:graphicImage name="mobileMarket.jpg" library="images" height="250" width="350" />
+           <p:separator/>
+        
+           <h:form>
+               
+               
+               <p:panelGrid  columns="2" >
+                  
+                   <f:facet name="header" >
+                       <div align="center">
+                           Kupovina
+                       </div>
+                   </f:facet>
+                   
+                   <p:outputLabel value="Ime:"/>
+                   <p:outputLabel  value="#{purchaseMb.lmb.loggedInUser.ime}"/>
+                   
+                   <p:outputLabel value="Prezime:"/>
+                   <p:outputLabel value ="#{purchaseMb.lmb.loggedInUser.prezime}" />
+                   
+                   <p:outputLabel value="Broj kartice:"/>
+                   <p:inputText  id="brojKarticeId" value="#{purchaseMb.brojKartice}" required="true" requiredMessage="obavezno polje" validatorMessage="Min-Max 8-10,samo brojevi">
+                       <f:validateLength minimum="8" maximum="10" for="brojKarticeId" />
+                       <f:validateRegex for="brojKarticeId" pattern="[0-9]+"/>
+                       <p:message for="brojKarticeId"   />
+                   </p:inputText>
+                  
+                   
+                   
+                   <p:outputLabel value="Proizvodi:"/>
+                   <p:outputLabel  value="#{purchaseMb.productList}"/>
+                   
+                   <p:outputLabel value="Ukupna cena:"/>
+                   <p:outputLabel value="#{purchaseMb.shoppingCartMB.totalPrice()}" />
+                   
+                   <f:facet name="footer">
+                       <div align="center">
+                           
+                           <p:commandButton value="Ok" action="#{purchaseMb.submitPurchase()}" >
+                            <p:confirm header="Potvrda kupovine" message="Da li ste sigurni?" icon="ui-icon-alert" />
+                           </p:commandButton>
+                           
+                       </div>
+                   </f:facet>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        
+                         <p:commandButton value="Da" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+                                          action="#{purchaseMb.submitPurchase()}"/>
+                         <p:commandButton value="Ne" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                         
+                    </p:confirmDialog>
+                   
+               </p:panelGrid>
+               
+               <p:messages  autoUpdate="true" closable="true"  style="width: 400px;"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+
