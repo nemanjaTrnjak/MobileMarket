@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="secured/odgovor.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="index.xhtml" x="377" y="317" zoom="true"/>
+        <Node id="secured/editKorisnik.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="secured/admin.xhtml" x="377" y="82" zoom="false"/>
+        <Node id="secured/editOprema.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="allPunjaci.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="alliPhone.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="secured/dodajKorisnika.xhtml" x="714" y="56" zoom="true"/>
+        <Node id="allSamsung.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="secured/kupovina.xhtml" x="369" y="449" zoom="true"/>
+        <Node id="secured/dodajOpremu.xhtml" x="357" y="-133" zoom="true"/>
+        <Node id="lokacija.xhtml" x="756" y="-219" zoom="true"/>
+        <Node id="login.xhtml" x="71" y="214" zoom="true"/>
+        <Node id="pitanje.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="allNokia.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="kontakt.xhtml" x="38" y="-208" zoom="true"/>
+        <Node id="allMaske.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="secured/dodajMobilni.xhtml" x="153" y="-21" zoom="true"/>
+        <Node id="allHuawei.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="secured/editMobilni.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="secured/dodajServis.xhtml" x="612" y="-53" zoom="true"/>
+        <Node id="registracija.xhtml" x="807" y="297" zoom="true"/>
+        <Node id="allBaterije.xhtml" x="400" y="300" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Dodaj dodatnu opremu</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+      
+           <h:form>
+            <p:commandLink  style="color: dimgray;" value="Vrati se na admin stranu" action ="admin.xhtml" />
+        </h:form>   
+        
+         <div class="sat">
+            <p:clock   pattern="HH:mm:ss dd.MM.yyyy"   />
+       </div>
+        
+        <center>
+            
+           <p:graphicImage name="mobileMarket.jpg" library="images" height="250" width="350" />
+          
+        </center>
+        
+        <p:separator/>
+        
+          <h:form>
+            
+        <center>
+        <p:panelGrid  columns="2">
+                
+        <f:facet name="header">
+            Dodaj opremu
+        </f:facet>
+            
+         <p:outputLabel value="Naziv:" />
+         <p:inputText  value="#{productsMb.naziv}">
+               </p:inputText>
+              
+           <p:outputLabel value="Cena:" />
+           <p:inputText  value="#{productsMb.cena}" >
+               </p:inputText>
+              
+             <p:outputLabel value="Stanje:" />
+             <p:inputText  value="#{productsMb.stanje}" >
+               </p:inputText>
+              
+               
+                 <f:facet name="footer">
+               <div align="center">
+                   <p:commandButton value="Dodaj" action="#{productsMb.addDodatnaOprema()}" >
+                            
+                  </p:commandButton>
+               </div>
+                </f:facet>  
+              
+        </p:panelGrid>
+        </center>
+       
+        
+        </h:form>
+        
+        
+    </h:body>
+</html>
+
